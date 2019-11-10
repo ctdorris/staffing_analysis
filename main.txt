@@ -1,0 +1,1032 @@
+Sub Staffing_Analysis()
+
+         Dim WS_Count As Integer
+         Dim I As Integer
+
+         ' Set WS_Count equal to the number of worksheets in the active
+         ' workbook.
+         WS_Count = ActiveWorkbook.Worksheets.Count
+
+         ' Begin the loop.
+         For I = 1 To WS_Count
+
+            ' Insert your code here.
+            ' The following line shows how to reference a sheet within
+            ' the loop by displaying the worksheet name in a dialog box.
+            
+            On Error GoTo NextSheet:
+                ActiveWorkbook.Worksheets(I).Select
+            
+            
+    If Range("D14").FormulaR1C1 = "Department" Or Range("D9").FormulaR1C1 = "Department" Then
+
+
+
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+
+   
+    If Range("AQ3").FormulaR1C1 = "Page:" Then
+    
+    Dim EEHrsinper As String
+    Dim SubHrsinper As String
+    EEHrsinper = Range("AU11").Value
+    SubHrsinper = Range("AU12").Value
+    
+    ActiveSheet.Shapes.Range(Array("Picture 1")).Select
+    Selection.Delete
+    Dim c As Range
+        For Each c In ActiveSheet.UsedRange
+            If c.MergeCells Then
+                c.Select
+                Selection.UnMerge
+            End If
+        Next
+ 
+    Cells.Select
+    Selection.EntireColumn.Hidden = False
+    Selection.EntireRow.Hidden = False
+    ActiveWindow.FreezePanes = False
+    Range("B14:B500").Select
+    Selection.Clear
+    
+    
+    Dim FindString As String
+    Dim Rng1 As Range
+    Dim Rngx As Range
+    Dim Rngy As Range
+    Dim Rng2 As Range
+    FindString = "Department"
+    If Trim(FindString) <> "" Then
+        With Range("E:E")
+            Set Rng1 = .Find(What:=FindString, _
+                            After:=.Cells(.Cells.Count), _
+                            LookIn:=xlValues, _
+                            LookAt:=xlWhole, _
+                            SearchOrder:=xlByRows, _
+                            SearchDirection:=xlNext, _
+                            MatchCase:=False)
+            If Not Rng1 Is Nothing Then
+                Application.Goto Rng1, True
+                Set Rngx = Selection
+    Rng1.Offset(0, -1).Select
+    Set Rngy = Selection
+    Rng1.Offset(0, 1).Select
+    Rng1.Offset(1500, 19).Select
+    Set Rng2 = Selection
+    Range(Rngx, Rng2).Select
+    Selection.Copy
+    Rngy.Select
+    ActiveSheet.Paste
+        
+    Else
+    FindString = "*"
+    If Trim(FindString) <> "" Then
+        With Range("E:E")
+            Set Rng1 = .Find(What:=FindString, _
+                            After:=.Cells(.Cells.Count), _
+                            LookIn:=xlValues, _
+                            LookAt:=xlWhole, _
+                            SearchOrder:=xlByRows, _
+                            SearchDirection:=xlNext, _
+                            MatchCase:=False)
+            If Not Rng1 Is Nothing Then
+                Application.Goto Rng1, True
+                Set Rngx = Selection
+    Rng1.Offset(0, -1).Select
+    Set Rngy = Selection
+    Rng1.Offset(0, 1).Select
+    Rng1.Offset(1500, 19).Select
+    Set Rng2 = Selection
+    Range(Rngx, Rng2).Select
+    Selection.Copy
+    Rngy.Select
+    ActiveSheet.Paste
+    End If
+    End With
+    End If
+   
+    End If
+     End With
+
+    End If
+    
+    Range("E:K,M:M,O:O,Q:Q,S:S,U:U,W:W,Y:Z").Select
+    Range("Z1").Activate
+    Range("E:K,M:M,O:O,Q:Q,S:S,U:U,W:W,Y:Z,AP:AQ,AS:AS,AU:AV").Select
+    Range("AU1").Activate
+    Selection.Delete Shift:=xlToLeft
+    
+    Columns("F:AI").Select
+    Selection.ColumnWidth = 6.29
+    Rows("1:3").RowHeight = 15
+    Rows("4:8").Select
+    Range("A8").Activate
+    Selection.Delete Shift:=xlUp
+    Range("B4:B7").Select
+    Selection.Cut Destination:=Range("D4:D7")
+    Range("D4:X4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("D5:X5").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("D6:X6").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("D7:X7").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .MergeCells = False
+    End With
+    Selection.Merge
+    
+    Rows("4:7").Select
+    Rows("4:7").EntireRow.AutoFit
+    Columns("D:D").EntireColumn.AutoFit
+    Columns("E:E").ColumnWidth = 5.43
+    
+    Columns("A:C").Select
+    Selection.ColumnWidth = 2
+    
+    Range("F9:I9,J9:M9,N9:Q9,R9:V9,Y9:AB9").Select
+    Range("Y9").Activate
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlTop
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .MergeCells = False
+    End With
+    Selection.Merge
+    
+
+    Dim Rngfte As Range
+    Dim Rngfte1 As Range
+    Dim Rngfte2 As Range
+    Dim DeleteK1 As Range
+    Dim DeleteK2 As Range
+    FindString = "FTE Totals"
+    If Trim(FindString) <> "" Then
+        With Range("F:F")
+            Set Rngfte = .Find(What:=FindString, _
+                            After:=.Cells(.Cells.Count), _
+                            LookIn:=xlValues, _
+                            LookAt:=xlWhole, _
+                            SearchOrder:=xlByRows, _
+                            SearchDirection:=xlNext, _
+                            MatchCase:=False)
+            If Not Rngfte Is Nothing Then
+                Application.Goto Rngfte, True
+                Set Rngfte1 = Selection
+                Rngfte.Offset(0, 3).Select
+                Set Rngfte2 = Selection
+                Rngfte.Offset(0, 5).Select
+                Set DeleteK1 = Selection
+                Rngfte.Offset(1500, 5).Select
+                Set DeleteK2 = Selection
+                Range(Rngfte1, Rngfte2).Select
+                With Selection
+                    .HorizontalAlignment = xlCenter
+                    .VerticalAlignment = xlTop
+                    .WrapText = True
+                    .Orientation = 0
+                    .AddIndent = False
+                    .IndentLevel = 0
+                    .ShrinkToFit = False
+                    .MergeCells = False
+                End With
+                Selection.Merge
+                
+                
+                Range(DeleteK1, DeleteK2).Select
+                Selection.Clear
+                
+            End If
+        End With
+    End If
+
+    Application.ScreenUpdating = True
+    
+    Rows("1:12").Select
+    Range("A12").Activate
+    ActiveWindow.FreezePanes = True
+    
+    Application.ScreenUpdating = False
+    
+    Range("D11:AB11").Select
+    Selection.AutoFilter
+    
+    Range("Y6").Select
+    ActiveCell.FormulaR1C1 = "EE Hrs in Period"
+    Range("Y7").Select
+    ActiveCell.FormulaR1C1 = "Sub Hrs In Period"
+    
+    Range("AA6").Select
+    ActiveCell.FormulaR1C1 = EEHrsinper
+    Range("AA7").Select
+    If SubHrsinper = "0" Then
+    ActiveCell.FormulaR1C1 = "=2080 / 365 * Days(EoMonth(TODAY(), -1), EoMonth(TODAY(), -2))"
+    Else
+    ActiveCell.FormulaR1C1 = SubHrsinper
+    End If
+        Range("AA7").Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("Y6:AA7").Select
+    With Selection.Font
+        .Name = "Calibri"
+        .Size = 8
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = xlAutomatic
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontNone
+    End With
+    Selection.Font.Bold = True
+    Range("AA7").Select
+    Selection.NumberFormat = "0"
+    
+    Dim workbooktochange As String
+    workbooktochange = ActiveWorkbook.Name
+    
+    Windows("Staffing Analysis Macro.xlsm").Activate
+    Sheets("Sheet1").Select
+    ActiveSheet.Shapes.Range(Array("Picture 1")).Select
+    Selection.Copy
+    Windows(workbooktochange).Activate
+    Range("B1").Select
+    ActiveSheet.Paste
+    
+    Range("AC11").Select
+    ActiveCell.FormulaR1C1 = "Site"
+    Range("AD11").Select
+    ActiveCell.FormulaR1C1 = "Account Title?"
+    Range("AE11").Select
+    ActiveCell.FormulaR1C1 = "Position Title?"
+    Range("AF11").Select
+    ActiveCell.FormulaR1C1 = "EE?"
+    Range("AG11").Select
+    ActiveCell.FormulaR1C1 = "Total - Position?"
+    Range("AH11").Select
+    ActiveCell.FormulaR1C1 = "Total - Account?"
+    Range("AI11").Select
+    ActiveCell.FormulaR1C1 = "Department"
+    Range("AJ11").Select
+    ActiveCell.FormulaR1C1 = "Department (Copy)"
+    Range("AK11").Select
+    ActiveCell.FormulaR1C1 = "Position"
+    Range("AL11").Select
+    ActiveCell.FormulaR1C1 = "Position (Copy)"
+    Range("AM11").Select
+    ActiveCell.FormulaR1C1 = "Employee Total?"
+    Range("AN11").Select
+    ActiveCell.FormulaR1C1 = "Percent of Paid?"
+    Range("AO11").Select
+    ActiveCell.FormulaR1C1 = "Subcontractor Total?"
+    Range("AP11").Select
+    ActiveCell.FormulaR1C1 = "Pull from Kronos"
+    Range("AQ11").Select
+    ActiveCell.FormulaR1C1 = "Sub Account Title?"
+    Range("AR11").Select
+    ActiveCell.FormulaR1C1 = "Sub EE?"
+    Range("AS11").Select
+    ActiveCell.FormulaR1C1 = "Sub Total - Account?"
+
+
+
+
+    ActiveSheet.Name = Left(Right(Range("D5:D5").Value, 5), 4)
+
+    
+    End If
+    
+       
+    Range("D13").Select
+
+    Dim Backfill As Range
+    
+    Set Backfill = Selection
+
+
+    
+    Do Until Backfill = "* = Backfill Position."
+    
+    Selection.Offset(0, 25).Select
+'
+    ActiveCell.FormulaR1C1 = "=LEFT(RIGHT(R5C4,5),4)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=OR(LEFT(RC[-26],1)=""6"",LEFT(RC[-26],1)=""7"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = _
+        "=IF(RC[-27]="""",FALSE,NOT(OR(RC[-1],RC[1],RC[2],RC[3])))"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = _
+        "=IF(AND(Italic,NOT(RC[-28]=""Subcontractor"")),TRUE,FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=AND(LEFT(RC[-29],5)=""Total"",RC[1]=FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = _
+        "=OR(LEFT(RC[-30],9)=""Total - 6"",LEFT(RC[-30],9)=""Total - 7"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(RC[-5],RC[-31],R[-1]C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(RC[-3],RC[-1],"""")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(RC[-6],RC[-33],R[-1]C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(NOT(RC[-6]),"""",RC[-1])"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(LEFT(RC[-35],14)=""Employee Total"",TRUE, FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(LEFT(RC[-36],15)=""Percent of Paid"",TRUE, FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(LEFT(RC[-37],19)=""Subcontractor Total"",TRUE, FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = False
+
+
+    
+        Selection.Offset(1, -38).Select
+
+'
+    Set Backfill = Selection
+
+'
+    Loop
+    
+        Application.Calculation = xlCalculationAutomatic
+
+    ActiveWorkbook.Names.Add Name:="Italic", RefersToR1C1:= _
+        "=GET.CELL(21,RC4)"
+    ActiveWorkbook.Names("Italic").Comment = ""
+
+    Application.Calculation = xlCalculationManual
+    
+'    Columns("AC:AP").Select
+'    Selection.Copy
+'    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+'        :=False, Transpose:=False
+'
+'    Application.CutCopyMode = False
+'    ActiveWorkbook.Names("Italic").Delete
+
+    Range("AF13:AF13").Select
+
+    Dim EE As Range
+    
+    Set EE = Selection
+    
+
+    
+    Do Until EE = ""
+'
+    If EE = True Then
+    Selection.Offset(0, -26).Select
+    Selection.FormulaR1C1 = "=IF(RC[-1]=""*"",RC[8],RC[19])"
+    Selection.Offset(0, 4).Select
+    Selection.FormulaR1C1 = "=RC[3]-RC[2]-RC[1]"
+    Selection.Offset(0, 3).Select
+    Selection.FormulaR1C1 = "=RC[11]-RC[9]"
+    Selection.Offset(0, 1).Select
+    Selection.FormulaR1C1 = "=RC[-1]/R6C27"
+    Selection.Offset(0, 8).Select
+    Selection.FormulaR1C1 = "=SUM(RC[-4]:RC[-1])"
+    Selection.Offset(0, 1).Select
+    Selection.FormulaR1C1 = "=RC[-1]/R6C27"
+    Selection.Offset(0, 2).Select
+    Selection.FormulaR1C1 = "=RC[-1]/R6C27"
+
+    Selection.Offset(1, 7).Select
+    Else
+    Selection.Offset(1, 0).Select
+    End If
+'
+    Set EE = Selection
+
+'
+    Loop
+    
+       
+    
+    Range("AG13:AG13").Select
+    
+    Dim Pos As Range
+    
+    Set Pos = Selection
+    
+    Do Until Pos = ""
+    
+    If Pos = True Then
+    Selection.Offset(0, -27).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C38,RC[31],C)"
+    Selection.Offset(0, 2).Select
+    ActiveCell.FormulaR1C1 = "=RC6-RC7"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC8/RC7,""N/A"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[28],RC37,C10)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[27],RC37,C11)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[26],RC37,C12)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[25],RC37,C13)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[24],RC37,C14)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC[-8]"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC14-RC15"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC16/RC15,""N/A"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[20],RC37,C18)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[19],RC37,C19)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[18],RC37,C20)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[17],RC37,C21)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[16],RC37,C22)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[15],RC37,C23)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[14],RC37,C24)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[13],RC37,C25)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC[-19]"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC25-RC26"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC27/RC26,""N/A"")"
+    
+    Selection.Offset(1, 5).Select
+    Else
+    Selection.Offset(1, 0).Select
+    End If
+
+    Set Pos = Selection
+    
+    Loop
+    
+    
+    
+    Range("AH13:AH13").Select
+    
+    Dim Dept As Range
+    
+    Set Dept = Selection
+    
+    Do Until Dept = ""
+    
+    If Dept = True Then
+    Selection.Offset(0, -28).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC6-RC7"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC8/RC7,""N/A"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC14-RC15"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC16/RC15,""N/A"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC35,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC25-RC26"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC27/RC26,""N/A"")"
+    
+    Selection.Offset(1, 6).Select
+    Else
+    Selection.Offset(1, 0).Select
+    End If
+
+    Set Dept = Selection
+    
+    Loop
+    
+    
+    Range("AM13:AM13").Select
+    
+    Dim EmpTot As Range
+    
+    Set EmpTot = Selection
+    
+    Do Until EmpTot = ""
+    
+    If EmpTot = True Then
+    Selection.Offset(0, -33).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC6-RC7"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC8/RC7,""N/A"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC14-RC15"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC16/RC15,""N/A"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C34,TRUE,C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC25-RC26"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC27/RC26,""N/A"")"
+    
+    Else
+    Selection.Offset(1, 0).Select
+    End If
+
+    Set EmpTot = Selection
+    
+    Loop
+    
+    
+        Range("AN13:AN13").Select
+    
+    Dim PoP As Range
+    
+    Set PoP = Selection
+    
+    Do Until PoP = ""
+    
+    If PoP = True Then
+    Selection.Offset(0, -34).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C25"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C25"
+    Selection.Offset(0, 3).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C25"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C25"
+    Selection.Offset(0, 3).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C24"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=R[-2]C/R[-2]C25"
+    
+    Else
+    Selection.Offset(1, 0).Select
+    End If
+
+    Set PoP = Selection
+    
+    Loop
+    
+    
+    Backfill.Select
+    Selection.Offset(15).Select
+    Dim LookForSub As Range
+    Set LookForSub = Selection
+    
+    Dim SubLocation As Range
+    FindString = "Department"
+    If Trim(FindString) <> "" Then
+        With Range(Backfill, LookForSub)
+            Set Rng1 = .Find(What:=FindString, _
+                            After:=.Cells(.Cells.Count), _
+                            LookIn:=xlValues, _
+                            LookAt:=xlWhole, _
+                            SearchOrder:=xlByRows, _
+                            SearchDirection:=xlNext, _
+                            MatchCase:=False)
+            If Not Rng1 Is Nothing Then
+                Application.Goto Rng1, True
+                Set SubLocation = Selection
+            
+            
+    Dim GT As Range
+    
+    Set GT = Selection
+
+
+    
+    Do Until Left(GT, 11) = "Grand Total"
+    
+    Selection.Offset(0, 25).Select
+'
+    ActiveCell.FormulaR1C1 = "=LEFT(RIGHT(R5C4,5),4)"
+    Selection.Offset(0, 6).Select
+    ActiveCell.FormulaR1C1 = "=IF(RC[8],RC[-31],R[-1]C)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(RC[8],RC[-1],"""")"
+    Selection.Offset(0, 5).Select
+    ActiveCell.FormulaR1C1 = "=IF(LEFT(RC[-37],19)=""Subcontractor Total"",TRUE, FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = False
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=OR(LEFT(RC[-39],1)=""6"",LEFT(RC[-39],1)=""7"")"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IF(AND(Italic,NOT(RC[-40]=""Subcontractor"")),TRUE,FALSE)"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=OR(LEFT(RC[-41],9)=""Total - 6"",LEFT(RC[-41],9)=""Total - 7"")"
+
+
+    
+        Selection.Offset(1, -41).Select
+
+'
+    Set GT = Selection
+
+'
+    Loop
+            
+            
+            
+'    SubLocation.Select
+'    Selection.Offset(0, 40).Select
+'
+'    Dim Subcon As Range
+'
+'    Set Subcon = Selection
+'
+'
+'    Do Until Subcon = ""
+''
+'    If Subcon = True Then
+'
+'    Selection.Offset(0, -38).Select
+'    ActiveCell.FormulaR1C1 = "=RC10/R7C27"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "N/A"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 2).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC10"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC6"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "N/A"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC10"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC6"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "N/A"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'
+'    Selection.Offset(1, 16).Select
+'    Else
+'    Selection.Offset(1, 0).Select
+'    End If
+''
+'    Set Subcon = Selection
+'
+''
+'    Loop
+'
+'
+'
+'
+'
+'    SubLocation.Select
+'    Selection.Offset(0, 31).Select
+'
+'    Dim SubconDept As Range
+'
+'    Set SubconDept = Selection
+'
+'
+'    Do Until SubconDept = ""
+''
+'    If SubconDept = True Then
+'
+'    Selection.Offset(0, -39).Select
+'    ActiveCell.FormulaR1C1 = "=SUMIF(C36,RC[29],C)"
+'    Selection.Offset(0, 2).Select
+'    ActiveCell.FormulaR1C1 = "=RC6-RC7"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=IFERROR(RC8/RC7,""N/A"")"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=SUMIF(C[26],RC35,C10)"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC10"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC6"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC7"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC14-RC15"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=IFERROR(RC16/RC15,""N/A"")"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "0"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC10"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC6"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC7"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC25-RC26"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=IFERROR(RC27/RC26,""N/A"")"
+'    Selection.Font.ThemeColor = xlThemeColorDark1
+'
+'    Selection.Offset(1, 17).Select
+'    Else
+'    Selection.Offset(1, 0).Select
+'    End If
+'
+'    Set SubconDept = Selection
+'
+''
+'    Loop
+'
+'
+'    SubLocation.Select
+'    Selection.Offset(0, 37).Select
+'
+'    Dim SubconTot As Range
+'
+'    Set SubconTot = Selection
+'
+'
+'    Do Until SubconTot = ""
+''
+'    If SubconTot = True Then
+'
+'    Selection.Offset(0, -35).Select
+'    ActiveCell.FormulaR1C1 = "=SUMIF(C45,TRUE,C)"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=SUMIF(C45,TRUE,C)"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=RC6-RC7"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=IFERROR(RC8/RC7,""N/A"")"
+'    Selection.Offset(0, 1).Select
+'    ActiveCell.FormulaR1C1 = "=SUMIF(C[26],RC35,C10)"
+'
+'    Selection.Offset(1, 16).Select
+'    Else
+'    Selection.Offset(1, 0).Select
+'    End If
+'
+'    Set SubconTot = Selection
+'
+''
+'    Loop
+            
+
+            End If
+         End With
+    End If
+        
+        
+    Backfill.Select
+    Selection.Offset(100).Select
+    Dim LookForGT As Range
+    Set LookForGT = Selection
+    
+    Dim GTLocation As Range
+    FindString = "Grand Total"
+    If Trim(FindString) <> "" Then
+        With Range(Backfill, LookForGT)
+            Set Rng1 = .Find(What:=FindString, _
+                            After:=.Cells(.Cells.Count), _
+                            LookIn:=xlValues, _
+                            LookAt:=xlPart, _
+                            SearchOrder:=xlByRows, _
+                            SearchDirection:=xlNext, _
+                            MatchCase:=False)
+                        If Not Rng1 Is Nothing Then
+                Application.Goto Rng1, True
+                Set GTLocation = Selection
+        
+        
+        
+    Selection.Offset(0, 2).Select
+    ActiveCell.FormulaR1C1 = "=SUM(SUMIF(C39,TRUE,C),SUMIF(C41,TRUE,C))"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=SUM(SUMIF(C39,TRUE,C),SUMIF(C41,TRUE,C))"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=RC6-RC7"
+    Selection.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "=IFERROR(RC8/RC7,""N/A"")"
+    
+    
+    
+            End If
+         End With
+    End If
+
+        
+     Application.Calculation = xlCalculationAutomatic
+       
+        Columns("AC:AS").Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Application.CutCopyMode = False
+    ActiveWorkbook.Names("Italic").Delete
+    
+    Columns("AC:AS").Select
+    Selection.EntireColumn.Hidden = True
+    
+    Application.ScreenUpdating = True
+    Range("A12").Select
+    
+    End If
+    
+NextSheet:
+            Resume NextSheet2:
+NextSheet2:
+             Next I
+             
+    ActiveWorkbook.Worksheets(1).Select
+    
+
+   MsgBox ("The Staffing Analysis was updated successfully.")
+
+
+    
+ End Sub
